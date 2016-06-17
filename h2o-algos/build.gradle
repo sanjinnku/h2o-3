@@ -27,3 +27,10 @@ test {
   // Defeat task 'test' by running no tests.
   exclude '**'
 }
+
+
+testMultiNode << {
+  if(project.hasProperty('test_ssl')) {
+    commandLine 'bash', './testSSL.sh'
+  }
+}
