@@ -145,6 +145,9 @@ public class ScoreKeeper extends Iced {
           case AUC:
             val = skj._AUC;
             break;
+          case MSE:
+            val = skj._mse;
+            break;
           case RMSE:
             val = skj._rmse;
             break;
