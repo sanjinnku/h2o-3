@@ -2182,7 +2182,7 @@ setMethod("h2o.confusionMatrix", "H2OModelMetrics", function(object, thresholds=
 #' plot(gbm)
 #' plot(gbm, timestep = "duration", metric = "deviance")
 #' plot(gbm, timestep = "number_of_trees", metric = "deviance")
-#' plot(gbm, timestep = "number_of_trees", metric = "MSE")
+#' plot(gbm, timestep = "number_of_trees", metric = "RMSE")
 #' plot(gbm, timestep = "number_of_trees", metric = "MAE")
 
 #' }
