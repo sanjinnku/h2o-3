@@ -149,8 +149,9 @@ public class ScoringInfo extends Iced {
     if (hasIterations) { colHeaders.add("Iterations"); colTypes.add("int"); colFormat.add("%d"); }
     if (hasSamples) { colHeaders.add("Samples"); colTypes.add("double"); colFormat.add("%f"); }
     colHeaders.add("Training RMSE"); colTypes.add("double"); colFormat.add("%.5f");
-    if(modelCategory == ModelCategory.Regression) {colHeaders.add("Training MAE"); colTypes.add("double"); colFormat.add("%.5f");}
-
+    if(modelCategory == ModelCategory.Regression) {
+      colHeaders.add("Training MAE"); colTypes.add("double"); colFormat.add("%.5f");
+    }
     if (modelCategory == ModelCategory.Regression) {
       colHeaders.add("Training Deviance"); colTypes.add("double"); colFormat.add("%.5f");
     }
