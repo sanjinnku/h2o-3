@@ -17,18 +17,18 @@ plot_scoring <- function(model) {
   par(mfrow=c(1,2))
 
   if(model@algorithm == "gbm" | model@algorithm == "drf"){
-    min <- min(range(sh$training_mse), range(sh$validation_mse))
-    max <- max(range(sh$training_mse), range(sh$validation_mse))
-    plot(x = sh$number_of_trees, y = sh$validation_mse, col = "orange", main = model@model_id, ylim = c(min,max))
-    points(x = sh$number_of_trees, y = sh$training_mse, col = "blue")
+    min <- min(range(sh$training_rmse), range(sh$validation_rmse))
+    max <- max(range(sh$training_rmse), range(sh$validation_rmse))
+    plot(x = sh$number_of_trees, y = sh$validation_rmse, col = "orange", main = model@model_id, ylim = c(min,max))
+    points(x = sh$number_of_trees, y = sh$training_rmse, col = "blue")
     min <- min(range(sh$training_auc), range(sh$validation_auc))
     max <- max(range(sh$training_auc), range(sh$validation_auc))
     plot(x = sh$number_of_trees, y = sh$validation_auc, col = "orange", main = model@model_id, ylim = c(min,max))
     points(x = sh$number_of_trees, y = sh$training_auc, col = "blue")
-    return(data.frame(number_of_trees = sh$number_of_trees, validation_auc = sh$validation_auc, validation_mse = sh$validation_mse))
+    return(data.frame(number_of_trees = sh$number_of_trees, validation_auc = sh$validation_auc, validation_rmse = sh$validation_rmse))
   }
   if(model@algorithm == "deeplearning"){
-    plot(x = sh$epochs, y = sh$validation_mse, col = "orange", main = model@model_id)
+    plot(x = sh$epochs, y = sh$validation_rmse, col = "orange", main = model@model_id)
     plot(x = sh$epochs, y = sh$validation_auc, col = "orange", main = model@model_id)
   }
 }
