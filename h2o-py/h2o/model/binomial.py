@@ -492,7 +492,7 @@ class H2OBinomialModel(ModelBase):
     """
     tm = ModelBase._get_metrics(self, train, valid, xval)
     m = {}
-    for k,v in zip(list(tm.keys()),list(tm.values())): m[k] = None if v is None else v.metric("mcc", thresholds=thresholds)
+    for k,v in zip(list(tm.keys()),list(tm.values())): m[k] = None if v is None else v.metric("absolute_mcc", thresholds=thresholds)
     return list(m.values())[0] if len(m) == 1 else m
 
   def max_per_class_error(self, thresholds=None, train=False, valid=False, xval=False):
