@@ -601,8 +601,8 @@ class H2OBinomialModel(ModelBase):
 
     if self._model_json["algo"] in ("deeplearning", "drf", "gbm"):
       if metric == "AUTO": metric = "logloss"
-      elif metric not in ("logloss","AUC","classification_error","MSE"):
-        raise ValueError("metric for H2OBinomialModel must be one of: AUTO, logloss, AUC, classification_error, MSE")
+      elif metric not in ("logloss","auc","classification_error","rmse"):
+        raise ValueError("metric for H2OBinomialModel must be one of: AUTO, logloss, auc, classification_error, rmse")
 
     self._plot(timestep=timestep, metric=metric, **kwargs)
 

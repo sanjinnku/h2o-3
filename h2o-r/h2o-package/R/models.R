@@ -2183,7 +2183,7 @@ setMethod("h2o.confusionMatrix", "H2OModelMetrics", function(object, thresholds=
 #' plot(gbm, timestep = "duration", metric = "deviance")
 #' plot(gbm, timestep = "number_of_trees", metric = "deviance")
 #' plot(gbm, timestep = "number_of_trees", metric = "rmse")
-#' plot(gbm, timestep = "number_of_trees", metric = "MAE")
+#' plot(gbm, timestep = "number_of_trees", metric = "mae")
 
 #' }
 #' @export
@@ -2212,8 +2212,8 @@ plot.H2OModel <- function(x, timestep = "AUTO", metric = "AUTO", ...) {
     if (is(x, "H2OBinomialModel")) {
       if (metric == "AUTO") {
         metric <- "logloss"
-      } else if (!(metric %in% c("logloss","AUC","classification_error","rmse"))) {
-        stop("metric for H2OBinomialModel must be one of: AUTO, logloss, AUC, classification_error, rmse")
+      } else if (!(metric %in% c("logloss","auc","classification_error","rmse"))) {
+        stop("metric for H2OBinomialModel must be one of: AUTO, logloss, auc, classification_error, rmse")
       }
     } else if (is(x, "H2OMultinomialModel")) {
       if (metric == "AUTO") {
@@ -2224,8 +2224,8 @@ plot.H2OModel <- function(x, timestep = "AUTO", metric = "AUTO", ...) {
     } else if (is(x, "H2ORegressionModel")) {
       if (metric == "AUTO") {
         metric <- "rmse"
-      } else if (!(metric %in% c("rmse","deviance","MAE"))) {
-        stop("metric for H2ORegressionModel must be one of: AUTO, rmse, MAE, or deviance")
+      } else if (!(metric %in% c("rmse","deviance","mae"))) {
+        stop("metric for H2ORegressionModel must be one of: AUTO, rmse, mae, or deviance")
       }
     } else {
       stop("Must be one of: H2OBinomialModel, H2OMultinomialModel or H2ORegressionModel")
