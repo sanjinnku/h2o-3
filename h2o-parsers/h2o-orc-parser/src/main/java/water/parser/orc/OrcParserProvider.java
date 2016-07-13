@@ -47,7 +47,13 @@ public class OrcParserProvider extends ParserProvider {
   public ParseSetup createParserSetup(Key[] inputs, ParseSetup requiredSetup) {
     if(inputs.length != 1)
       throw H2O.unimpl("ORC only supports single file parse at the moment");
-    FileVec f = DKV.getGet(inputs[0]);
+    FileVec f;
+    Object frameOrVec = DKV.getGet(inputs[0]);
+
+    if (frameOrVec instanceof water.fvec.Frame)
+      f = (FileVec) ((Frame) frameOrVec).vec(0);
+    else
+      f = (FileVec) frameOrVec;
     return readSetup(f);
   }
   private Reader getReader(FileVec f) throws IOException {
