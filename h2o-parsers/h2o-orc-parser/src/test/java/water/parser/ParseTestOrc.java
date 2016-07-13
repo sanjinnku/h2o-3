@@ -81,7 +81,7 @@ public class ParseTestOrc extends TestUtil {
   };
 
   @BeforeClass
-  static public void setup() { TestUtil.stall_till_cloudsize(1); }
+  static public void setup() { TestUtil.stall_till_cloudsize(5); }
 
   @Test
   public void testParseAllOrcs() {
@@ -112,14 +112,14 @@ public class ParseTestOrc extends TestUtil {
 //      if (fIndex == 17)   // problem with bigint retrieval, wait for Tomas
 //        continue;
 
-//      Random rn = new Random();
-//      int randNum = rn.nextInt(10);
-//
-//      if (randNum > 3)  // skip test for 70% of the time
-//        continue;
+      Random rn = new Random();
+      int randNum = rn.nextInt(10);
+
+      if (randNum > 3)  // skip test for 70% of the time
+        continue;
 
       String fileName = allOrcFiles[fIndex];
-      System.out.println("parsing " + fileName);
+      Log.info("Orc Parser parsing " + fileName);
       File f = find_test_file_static(fileName);
 
       if (f != null && f.exists()) {
